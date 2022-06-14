@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fastapi-api
+spec:
+  selector:
+    matchLabels:
+      run: fastapi-api
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        run: fastapi-api
+    spec:
+      containers:
+      - name: fastapi-api
+        image: beatrizcf2/myimage:1.0
+        ports:
+        - containerPort: 80
+        resources:
+          limits:
+            cpu: 500m
+          requests:
+            cpu: 200m

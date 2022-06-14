@@ -1,0 +1,15 @@
+---
+- name: Deploy to K8s Cluster 
+  hosts: localhost
+  tasks:
+    - name: Deploy Pod
+      shell: |
+        kubectl apply -f deployment.yml
+    
+    # - name: Deploy Service
+    #   shell: | 
+    #     kubectl expose deployment fastapi-api --port=80 --type=LoadBalancer
+    
+    - name: Create AutoScale
+      shell: |
+        kubectl autoscale deployment fastapi-api --cpu-percent=50 --min=1 --max=10
