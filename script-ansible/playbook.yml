@@ -6,9 +6,9 @@
       shell: |
         kubectl apply -f deployment.yml
     
-    # - name: Deploy Service
-    #   shell: | 
-    #     kubectl expose deployment fastapi-api --port=80 --type=LoadBalancer
+    - name: Deploy Service
+      shell: | 
+        kubectl expose deployment fastapi-api --port=80 --type=LoadBalancer
     
     - name: Create AutoScale
       shell: |
